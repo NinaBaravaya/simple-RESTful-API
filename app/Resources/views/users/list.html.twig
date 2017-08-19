@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>firstName</th>
+            <th>lastName</th>
+            <th>email</th>
+            <th>phone</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.lastName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>
+                    <a href="{{ path('edit_user', {'id': user.id}) }}" class="btn btn-xs btn-success">
+                        edit
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('delete_user') }}" class="btn btn-xs btn-danger">
+                        delete
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('new_user') }}" class="btn btn-primary">
+        <span class="fa fa-plus-circle"></span>
+        new user
+    </a>
+    </div>
+{% endblock %}
